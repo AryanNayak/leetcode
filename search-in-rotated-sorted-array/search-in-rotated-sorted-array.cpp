@@ -13,7 +13,7 @@ public:
             {
                 return mid; 
             }
-            else{
+      
             
             if(arr[low] <= arr[mid])
             {
@@ -37,7 +37,7 @@ public:
                         high = mid -1; 
                 }
                
-            }
+    
         }
         }
         
