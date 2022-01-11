@@ -14,7 +14,7 @@ public:
         
         double  ans = 1; 
         
-        for(long long i =N ; i ; i /= 2)
+        for(long long i =N ; i  > 0; i /= 2)
         {
             
             if(i%2 == 1)
