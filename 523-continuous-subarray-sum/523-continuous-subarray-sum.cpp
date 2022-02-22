@@ -1,24 +1,28 @@
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
-        
+    
         if(nums.size() < 2)
         {
             return false; 
         }
+        
+        
         unordered_map<int, int> mp; 
-
-        mp[0] = -1; // 
-
+        
+        mp[0] = -1; 
+        
         int runningSum = 0; 
-
-        for(int i = 0; i <nums.size(); i++)
-        {   
-            runningSum += nums[i]; // prefix sum 
-            // if(k != 0)
-            // {
-                runningSum = runningSum%k; // modulas 
-            // }
+        
+        for(int i = 0; i < nums.size(); i++)
+        {
+            
+            runningSum += nums[i]; 
+            runningSum = runningSum%k; 
+            
+            
+            cout << runningSum << "->" << i << endl; 
+            
             if(mp.find(runningSum) != mp.end())
             {
                 if(i - mp[runningSum] > 1)
@@ -31,8 +35,7 @@ public:
                 mp[runningSum] = i; 
             }
         }
-
+        
         return false; 
-
     }
 };
