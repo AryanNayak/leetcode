@@ -34,7 +34,7 @@ public:
             {
                 Node* cur= q.front(); q.pop();
                 // NULL node
-                if (!root) { res+="null ";  continue; } 
+//                 if (!root) { res+="null ";  continue; } 
                 
                 res+=to_string(cur->val);
                 res.push_back(' ');
