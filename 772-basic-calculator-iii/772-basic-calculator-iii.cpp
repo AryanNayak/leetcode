@@ -21,6 +21,8 @@ public:
             if (i < s.length())                  // handle over flow of i in cases like "1 + 1"
                 op = s[i];
         }
+        for(auto m : nums)
+        cout << m << endl; 
         return accumulate(nums.begin(), nums.end(), 0);
     }
     
