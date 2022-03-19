@@ -4,7 +4,7 @@ public:
         
         priority_queue< int ,vector<int>, greater<int>> pq; //MIN HEAP 
         
-        
+    
         for(auto ele : nums)
         {
             
