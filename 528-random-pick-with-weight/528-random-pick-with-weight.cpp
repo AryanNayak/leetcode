@@ -21,7 +21,9 @@ public:
         int x = s.back(); 
         
         int index = rand() % x;
+        cout << index << endl;
         auto it = upper_bound(s.begin(), s.end(), index); 
+        
         return it - s.begin(); 
     }
 };
