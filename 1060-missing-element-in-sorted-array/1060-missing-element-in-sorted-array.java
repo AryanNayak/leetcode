@@ -14,7 +14,7 @@ class Solution {
     int left = 0, right = n - 1, pivot;
     // find left = right index such that 
     // missing(left - 1) < k <= missing(left)
-    while (left != right) {
+    while (left < right) {
       pivot = left + (right - left) / 2;
 
       if (missing(pivot, nums) < k) left = pivot + 1;
