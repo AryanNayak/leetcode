@@ -17,11 +17,13 @@ public:
                 if(nums[i] < 0)
                 {
                     neg++; 
-                }
-                if(neg == 1 && firstNeg == -2)
+                    
+                      if(neg == 1)
                 {
                     firstNeg = i; 
                 }
+                }
+              
                 if(neg%2 == 0)
                 {
                     len = max(len, i - frameStart); 
