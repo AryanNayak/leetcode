@@ -1,30 +1,34 @@
 class Solution {
+private: 
     vector<int> s; 
 public:
     Solution(vector<int>& w) {
         
-        for(auto m : w)
+        for(int i = 0; i < w.size(); i++)
         {
             if(s.empty())
             {
-                s.push_back(m); 
+                s.push_back(w[i]); 
             }
             else
             {
-                s.push_back(m + s.back());     
+                s.push_back(w[i] + s.back()); 
             }
         }
+        
     }
     
     int pickIndex() {
         
         int x = s.back(); 
         
-        int index = rand() % x;
-        cout << index << endl;
-        auto it = upper_bound(s.begin(), s.end(), index); 
+        int findVal = rand()%x; 
+        
+        auto it = upper_bound(s.begin(), s.end(), findVal); 
+        
         
         return it - s.begin(); 
+        
     }
 };
 
