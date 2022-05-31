@@ -13,6 +13,9 @@ public:
             }
         }
         
+        for(auto e : indegree)
+            cout << e ; 
+        
         vector<int> ans; 
         
         queue<int> q; 
@@ -79,6 +82,6 @@ public:
 //             cout << e << endl; 
 //         }
         
-        return ans.size() >= n; 
+        return ans.size() == n; 
     }
 };
