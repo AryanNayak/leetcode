@@ -2,8 +2,8 @@ class Solution {
 public:
   int findPeakElement(vector<int>& nums) {
         int l = 0, r = nums.size();
-        if(r == 1)
-            return 0;
+        // if(r == 1)
+        //     return 0;
         int ans = 0;
         while(l <= r){
             int mid = l + (r - l) / 2;
