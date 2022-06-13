@@ -1,16 +1,10 @@
 class Solution {
 public:
-    int minimumTotal(vector<vector<int>>& triangle) {
-        
-        for(int level = 1; level < triangle.size(); level++)
-        {
-            for(int i = 0; i <= level; i++)
-            {
-       	triangle[level][i] += min(triangle[level - 1][min(i, (int)size(triangle[level - 1]) - 1)], // we can either come from previous level and same index
-			                          triangle[level - 1][max(i - 1, 0)]);
-            }
-        }
-        
-        return *min_element(triangle.back().begin(), triangle.back().end()); 
-    }
+  int minimumTotal(vector<vector<int>>& triangle) {
+	for(int level = size(triangle) - 2; level >= 0; level--) // start from bottom-1 level
+		for(int i = 0; i <= level; i++)
+			 // for every cell: we could have moved here from same index or index+1 of next level
+			triangle[level][i] += min(triangle[level + 1][i], triangle[level + 1][i + 1]);
+	return triangle[0][0]; // lastly t[0][0] will contain accumulated sum of minimum path
+}
 };
