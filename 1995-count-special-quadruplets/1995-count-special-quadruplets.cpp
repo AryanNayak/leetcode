@@ -1,25 +1,18 @@
 class Solution {
 public:
     int countQuadruplets(vector<int>& nums) {
-        int res = 0; 
-        int len = nums.size(); 
+        int res = 0, n = nums.size();
+        unordered_map<int, int> freq;
+        reverse(nums.begin(), nums.end());
         
-        unordered_map<int, int> count; 
-        
-        count[nums[len - 1] - nums[len -2]] = 1; 
-        
-        for(int b = len -3; b >= 1; b--)
-        {
-            for(int a = b - 1; a >= 0; a--)
-            {
-                res += count[nums[a] + nums[b]]; 
-            }
-            for(int x = len - 1; x > b; x--)
-            {
-                count[nums[x] - nums[b]]++; 
-            }
+        freq[nums[0]]++;
+        for (int i = 1; i < n-2; i++) {
+            for (int j = i+1; j < n-1; j++)
+                for (int k = j+1; k < n; k++) 
+                    res += freq[nums[i]+nums[j]+nums[k]];
+            freq[nums[i]]++;
         }
-        
-        return res; 
+		
+        return res;
     }
 };
