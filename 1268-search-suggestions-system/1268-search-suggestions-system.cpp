@@ -2,29 +2,40 @@ class Solution {
 public:
     vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
         
-        int n = searchWord.size(); 
-        
         sort(products.begin(), products.end()); 
         
+        vector<vector<string>> ans; 
         
-        vector<vector<string>> res(n, vector<string>{}); 
+        int left = 0, right = products.size() - 1; 
         
-        for(auto& product : products)
+        
+        for(int i = 0; i < searchWord.size(); i++)
         {
-            for(int i = 0; i <  n; i++)
+            vector<string> res; 
+            
+            char c = searchWord[i]; 
+            
+            while(left <= right && (products[left].size() == i || products[left][i] < c))
             {
-                if(product[i] != searchWord[i])
-                {
-                    break; 
-                }
-                
-                if(product[i] == searchWord[i] && res[i].size() < 3)
-                {
-                    res[i].push_back(product); 
-                }        
+                left++; 
             }
+            
+            
+            while(left <= right && (products[right].size() == i || products[right][i] > c))
+            {
+                right--; 
+            }
+            
+            for(int j = 0; j < 3 && left + j <= right; j++)
+            {
+                res.push_back(products[left + j]); 
+            }
+            
+            ans.push_back(res); 
+            
         }
         
-        return res; 
+        return ans; 
+        
     }
 };
