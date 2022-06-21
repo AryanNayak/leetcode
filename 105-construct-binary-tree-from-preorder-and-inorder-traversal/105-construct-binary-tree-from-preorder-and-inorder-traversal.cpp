@@ -14,7 +14,6 @@ public:
     int idx = 0; 
     TreeNode* buildTree(int start, int end, vector<int>& inorder, vector<int>& preorder)
     {
-        
         if(start > end)
         {
             return nullptr; 
@@ -32,7 +31,6 @@ public:
                 break; 
             }
         }
-        
         
         root->left = buildTree(start, inIdx - 1, inorder, preorder); 
         root->right = buildTree(inIdx + 1, end, inorder, preorder);         
