@@ -5,14 +5,16 @@ public:
      
         if(n == 0 || m == 0)
         {
+            //aab -> aab
             if(n == 0 && m == 0)
             {
                 return dp[n][m] = 1; 
-            }
+            }                                            
             else if(m == 1 && p[m - 1] == '*')
             {
                 return dp[n][m] = 1; 
             }
+            
             return dp[n][m] = 0; 
         }
         
@@ -30,20 +32,21 @@ public:
         {
             val = isMatchMemo(s, p, n - 1, m - 1, dp); 
         }
-        else if(ch2 == '*')
+        else if(ch2 == '*') // aa -> aa*  
         {
-            
+    
             bool res = false; 
             
-            res = res || (isMatchMemo(s, p, n - 1, m, dp)== 1); 
-            res = res || (isMatchMemo(s, p, n, m - 1, dp) == 1); 
+            res = res || (isMatchMemo(s, p, n - 1, m, dp)== 1); //"" * -> true 
+            res = res || (isMatchMemo(s, p, n, m - 1, dp) == 1); //
             
-            val = res ? 1 : 0;
+            val = res ? 1 : 0; // true -> 1
             
         }
-        else 
+        else // ch1 != ch2
+        {
             val = 0; 
-        
+        }
         
         return dp[n][m] = val; 
     }
@@ -62,7 +65,7 @@ public:
         
         while(i < s.length())
         {
-            while(i < s.length() && s[i - 1] == '*' && s[i] == '*')
+            while(i < s.length() && s[i - 1] == '*' && s[i] == '*') // skipping all *
                 i++; 
             
             if(i < s.length())
@@ -82,6 +85,7 @@ public:
         int m = p.length(); 
         
         vector<vector<int>> dp(n + 1, vector<int>(m + 1, - 1)); 
+        
         return isMatchMemo(s, p, n, m, dp) == 1;
         
     }
