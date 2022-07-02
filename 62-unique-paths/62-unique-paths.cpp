@@ -16,12 +16,12 @@ public:
         
         int count = 0; 
         
-        if(sr + 1 <= er)
+        if(sr + 1 < er + 1)
         {
             count += path(sr + 1, sc, er, ec, dp);     
         }
         
-        if(sc + 1 <= ec)
+        if(sc + 1 < ec + 1)
         {
             count += path(sr, sc + 1, er, ec, dp); 
         }
