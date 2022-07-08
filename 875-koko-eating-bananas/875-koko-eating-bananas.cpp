@@ -12,8 +12,14 @@ public:
         return time <= h; 
     }
     int minEatingSpeed(vector<int>& piles, int h) {
+        
+        int maxi = INT_MIN; 
+        for(auto m : piles)
+        {
+            maxi = max(maxi, m); 
+        }
   
-        int low = 1, high = pow(10, 9); 
+        int low = 1, high =maxi;  
         
         while(low < high)
         {
